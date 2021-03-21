@@ -15,7 +15,6 @@ import { app, BrowserWindow, shell } from 'electron';
 import { autoUpdater } from 'electron-updater';
 import log from 'electron-log';
 import MenuBuilder from './menu';
-
 export default class AppUpdater {
   constructor() {
     log.transports.file.level = 'info';
@@ -25,6 +24,7 @@ export default class AppUpdater {
 }
 
 let mainWindow: BrowserWindow | null = null;
+let splash: BrowserWindow | null = null;
 
 if (process.env.NODE_ENV === 'production') {
   const sourceMapSupport = require('source-map-support');
@@ -77,21 +77,38 @@ const createWindow = async () => {
     },
   });
 
+  splash = new BrowserWindow({
+    width: 500,
+    height: 310,
+    transparent: true,
+    frame: false,
+    alwaysOnTop: true,
+    resizable: false,
+    movable: false,
+    darkTheme: true,
+    webPreferences: {
+      devTools: false,
+    },
+  });
+  splash.loadURL(`file://${__dirname}/splash.html`);
+
   mainWindow.loadURL(`file://${__dirname}/index.html`);
 
   // @TODO: Use 'ready-to-show' event
-  //        https://github.com/electron/electron/blob/master/docs/api/browser-window.md#using-ready-to-show-event
-  mainWindow.webContents.on('did-finish-load', () => {
+  mainWindow.once('ready-to-show', () => {
     if (!mainWindow) {
       throw new Error('"mainWindow" is not defined');
     }
     if (process.env.START_MINIMIZED) {
       mainWindow.minimize();
     } else {
+      if (splash) splash.destroy();
       mainWindow.show();
       mainWindow.focus();
     }
   });
+  //        https://github.com/electron/electron/blob/master/docs/api/browser-window.md#using-ready-to-show-event
+  // mainWindow.webContents.on('did-finish-load', () => {});
 
   mainWindow.on('closed', () => {
     mainWindow = null;
