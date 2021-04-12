@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
 import './App.global.css';
 import PageHeader from './components/PageHeader';
+import Routes from './components/Routes';
+
 import styled from 'styled-components';
 import { Layout, Menu } from 'antd';
 import { UserOutlined, PieChartOutlined } from '@ant-design/icons';
+import ListItem from './components/common/ListItem';
 
 const { Header, Sider, Content } = Layout;
 const { SubMenu } = Menu;
@@ -18,18 +21,15 @@ const App: React.FC = () => {
           collapsed={collapsed}
           onCollapse={() => setCollapsed(!collapsed)}
         >
-          <div className="logo" />
-          <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline">
-            <Menu.Item key="1" icon={<PieChartOutlined />}>
-              Option 1
-            </Menu.Item>
-          </Menu>
+          <ListItem title="Hello" />
         </Sider>
         <Layout className="site-layout">
           <Header className="site-layout-background">
             <PageHeader title="Restmon" />
           </Header>
-          <Content style={{ margin: '0 16px' }}>Hello</Content>
+          <Content>
+            <Routes />
+          </Content>
         </Layout>
       </Layout>
     </AppStyle>
@@ -46,7 +46,7 @@ const AppStyle = styled.div`
   }
 
   #components-layout-demo-custom-trigger .trigger:hover {
-    color: #1890ff;
+    color: #052e55;
   }
 
   #components-layout-demo-custom-trigger .logo {

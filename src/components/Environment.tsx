@@ -1,6 +1,7 @@
 import { Button } from 'antd';
 import React from 'react';
 import styled from 'styled-components';
+import ListItem from './common/ListItem';
 
 interface EnvironmentProps {
   title: string | null;
@@ -9,7 +10,7 @@ interface EnvironmentProps {
 const Environment: React.FC<EnvironmentProps> = (props) => {
   return (
     <EnvironmentStyle>
-      <p className="title">{props.title}</p>
+      <ListItem title="EN!">{props.title}</ListItem>
     </EnvironmentStyle>
   );
 };
@@ -19,7 +20,6 @@ const EnvironmentStyle = styled.section`
 
   .title {
     font-size: 1rem;
-
     padding: 0.5rem 1rem;
   }
 `;
