@@ -10,6 +10,7 @@ import ListItem from './components/common/RouteListItem';
 import { MinusCircleOutlined, PlusOutlined } from '@ant-design/icons';
 import EnvListItem from './components/common/EnvListItem';
 import Environment from './components/Environment';
+import Text from 'antd/lib/typography/Text';
 
 const { Header, Sider, Content } = Layout;
 const { SubMenu } = Menu;
@@ -28,8 +29,9 @@ const App: React.FC = () => {
           <Environment />
         </Sider>
         <Layout className="site-layout">
-          <Header className="site-layout-background">
-            <PageHeader title="Restmon" />
+          <Header style={{ backgroundColor: '#e4e4e4' }}>
+            <Text>Current Enviroment</Text>
+            {/* <PageHeader title="Restmon" /> */}
           </Header>
           <Content>
             <Routes />

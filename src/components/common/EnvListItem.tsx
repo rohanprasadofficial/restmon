@@ -10,7 +10,9 @@ const EnvListItem: React.FC<EnvListItemProps> = ({ title, routeCount = 0 }) => {
   return (
     <EnvListItemStyle>
       <Badge size="small" count={routeCount}>
-        <Text className="title">{title}</Text>
+        <Text strong className="title">
+          {title}
+        </Text>
       </Badge>
     </EnvListItemStyle>
   );

@@ -1,4 +1,4 @@
-interface IMethod {
+export interface IMethod {
   title: string;
   hexColor: string;
   code: Number;
