@@ -1,22 +1,19 @@
 import React, { useState } from 'react';
 import './App.global.css';
-import PageHeader from './components/PageHeader';
+
 import Routes from './components/Routes';
 
 import styled from 'styled-components';
-import { Layout, Menu, Button } from 'antd';
-import { UserOutlined, PieChartOutlined } from '@ant-design/icons';
-import ListItem from './components/common/RouteListItem';
-import { MinusCircleOutlined, PlusOutlined } from '@ant-design/icons';
-import EnvListItem from './components/common/EnvListItem';
+import { Layout, Button, Tag, Divider, InputNumber } from 'antd';
+
 import Environment from './components/Environment';
 import Text from 'antd/lib/typography/Text';
 
 const { Header, Sider, Content } = Layout;
-const { SubMenu } = Menu;
 
 const App: React.FC = () => {
   const [collapsed, setCollapsed] = useState(false);
+  const [status, setStatus] = useState<boolean>(false);
   return (
     <AppStyle>
       <Layout style={{ minHeight: '100vh' }}>
@@ -29,9 +26,47 @@ const App: React.FC = () => {
           <Environment />
         </Sider>
         <Layout className="site-layout">
-          <Header style={{ backgroundColor: '#e4e4e4' }}>
-            <Text>Current Enviroment</Text>
-            {/* <PageHeader title="Restmon" /> */}
+          <Header className="header">
+            {!status ? (
+              <Button
+                className="button"
+                onClick={() => setStatus(!status)}
+                type="primary"
+              >
+                Start
+              </Button>
+            ) : (
+              <Button
+                className="button"
+                onClick={() => setStatus(!status)}
+                danger
+                type="primary"
+              >
+                Stop
+              </Button>
+            )}
+            <Tag color="cyan">Prod Env</Tag>
+            <Divider className="divider" type="vertical" />
+            <Text strong>127.0.0.1 : </Text>
+            <InputNumber
+              className="portInput"
+              min={1024}
+              max={1491510}
+              defaultValue={3000}
+              placeholder="Port"
+              onChange={() => {}}
+            />
+
+            <div className="latencyInput">
+              <Text strong>Latency(ms) : </Text>
+              <InputNumber
+                min={0}
+                max={10000}
+                defaultValue={0}
+                placeholder="Latency"
+                onChange={() => {}}
+              />
+            </div>
           </Header>
           <Content>
             <Routes />
@@ -43,26 +78,25 @@ const App: React.FC = () => {
 };
 
 const AppStyle = styled.div`
-  #components-layout-demo-custom-trigger .trigger {
-    padding: 0 24px;
-    font-size: 18px;
-    line-height: 64px;
-    cursor: pointer;
-    transition: color 0.3s;
-  }
-
-  #components-layout-demo-custom-trigger .trigger:hover {
-    color: #052e55;
-  }
-
-  #components-layout-demo-custom-trigger .logo {
-    height: 32px;
-    margin: 16px;
-    background: rgba(255, 255, 255, 0.3);
-  }
-
   .site-layout .site-layout-background {
     background: #fff;
+  }
+  .header {
+    color: white;
+    padding-left: 1rem;
+    .button {
+      margin-right: 1rem;
+    }
+    .divider {
+      background-color: white;
+    }
+    .portInput {
+      width: 5%;
+      margin-left: 0.2rem;
+    }
+    .latencyInput {
+      float: right;
+    }
   }
 `;
 

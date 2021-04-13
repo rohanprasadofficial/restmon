@@ -1,8 +1,12 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { DownOutlined } from '@ant-design/icons';
-import { Menu, Dropdown, Button, Input, Tabs} from 'antd';
+import { DownOutlined, CopyOutlined } from '@ant-design/icons';
+import { Menu, Dropdown, Button, Input, Tabs } from 'antd';
 import { MenuInfo } from 'rc-menu/lib/interface';
+import Body from './Body';
+import Headers from './Header';
+import Rules from './Rules';
+import Settings from './Settings';
 const { TextArea } = Input;
 const { TabPane } = Tabs;
 interface DashboardProps {
@@ -16,9 +20,27 @@ const Dashboard: React.FC<DashboardProps> = () => {
     setMethod(e.key);
   };
 
-const OperationsSlot = {
-    left: <Button className="tabs-extra-demo-button">Left Extra Action</Button>,
-    right: <Button>Right Extra Action</Button>,
+  const OperationsSlot = {
+    left: (
+      <Dropdown
+        className="dropDown"
+        overlay={
+          <Menu>
+            <Menu.Item>Test</Menu.Item>
+          </Menu>
+        }
+        trigger={['click']}
+      >
+        <Button type="dashed" style={{ marginRight: '1rem' }}>
+          {method} <DownOutlined />
+        </Button>
+      </Dropdown>
+    ),
+    right: (
+      <Button type="dashed">
+        <CopyOutlined /> Duplicate
+      </Button>
+    ),
   };
 
   const menu = () => (
@@ -54,20 +76,16 @@ const OperationsSlot = {
         <div className="card-container">
           <Tabs tabBarExtraContent={OperationsSlot} type="card">
             <TabPane tab="Status Code & Body" key="1">
-              <p>Content of Tab Pane 1</p>
-             
+              <Body />
             </TabPane>
             <TabPane tab="Headers" key="2">
-              <p>Content of Tab Pane 2</p>
-            
+              <Headers />
             </TabPane>
             <TabPane tab="Rules" key="3">
-              <p>Content of Tab Pane 3</p>
-             
+              <Rules />
             </TabPane>
             <TabPane tab="Settings" key="4">
-              <p>Content of Tab Pane 3</p>
-            
+              <Settings />
             </TabPane>
           </Tabs>
         </div>

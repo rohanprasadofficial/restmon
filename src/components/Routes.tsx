@@ -13,11 +13,13 @@ const Routes: React.FC = () => {
       <Layout>
         <Sider className="sider" trigger={null} collapsible={false}>
           <RouteListItem title="/getUsers" method="GET" />
-
+          <RouteListItem title="/login" method="POST" />
+          <RouteListItem title="/test" method="DELETE" />
           <Button
             type="dashed"
             onClick={() => console.log('aswda')}
             block
+            className="addRouteBtn"
             icon={<PlusOutlined />}
           >
             Add Route
@@ -38,7 +40,8 @@ const RoutesStyle = styled.div`
     background-color: white;
   }
   .addRouteBtn {
-    margin: 0.5rem;
+    margin: 1rem 1rem;
+    width: 80%;
   }
   .content {
     margin: 1.5rem 1rem;
