@@ -4,9 +4,12 @@ import PageHeader from './components/PageHeader';
 import Routes from './components/Routes';
 
 import styled from 'styled-components';
-import { Layout, Menu } from 'antd';
+import { Layout, Menu, Button } from 'antd';
 import { UserOutlined, PieChartOutlined } from '@ant-design/icons';
-import ListItem from './components/common/ListItem';
+import ListItem from './components/common/RouteListItem';
+import { MinusCircleOutlined, PlusOutlined } from '@ant-design/icons';
+import EnvListItem from './components/common/EnvListItem';
+import Environment from './components/Environment';
 
 const { Header, Sider, Content } = Layout;
 const { SubMenu } = Menu;
@@ -17,11 +20,12 @@ const App: React.FC = () => {
     <AppStyle>
       <Layout style={{ minHeight: '100vh' }}>
         <Sider
-          collapsible
+          collapsible={false}
+          style={{ backgroundColor: 'white', borderRight: '1px solid #ebebeb' }}
           collapsed={collapsed}
           onCollapse={() => setCollapsed(!collapsed)}
         >
-          <ListItem title="Hello" />
+          <Environment />
         </Sider>
         <Layout className="site-layout">
           <Header className="site-layout-background">
