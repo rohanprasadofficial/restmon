@@ -56,6 +56,8 @@ const Dashboard: React.FC<DashboardProps> = () => {
       <Menu.Item key="PATCH">PATCH</Menu.Item>
     </Menu>
   );
+
+  //TODO: Covert dropdown to select menu
   return (
     <DashboardStyle>
       <div className="routeNamePath">
@@ -117,7 +119,6 @@ const TabbingStyleDiv = styled.div`
   margin-top: 1rem;
 
   .card-container > .ant-tabs-card .ant-tabs-content {
-    height: 120px;
     margin-top: -16px;
   }
   .card-container > .ant-tabs-card .ant-tabs-content > .ant-tabs-tabpane {
