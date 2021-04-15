@@ -1,5 +1,9 @@
+import { Button } from 'antd';
 import React from 'react';
 import styled from 'styled-components';
+import HeaderInput from './common/HeaderInput';
+import { AppstoreAddOutlined } from '@ant-design/icons';
+
 interface HeadersProps {
   //   title: string;
 }
@@ -7,7 +11,11 @@ interface HeadersProps {
 const Headers: React.FC<HeadersProps> = () => {
   return (
     <HeadersStyle>
-      <p>Body</p>
+      <HeaderInput />
+      <HeaderInput />
+      <HeaderInput />
+      <HeaderInput />
+      <Button icon={<AppstoreAddOutlined />}>Add Header</Button>
     </HeadersStyle>
   );
 };
