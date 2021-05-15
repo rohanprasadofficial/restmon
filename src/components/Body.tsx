@@ -1,16 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import {
-  Dropdown,
-  Upload,
-  message,
-  Menu,
-  Button,
-  Select,
-  Divider,
-  Input,
-} from 'antd';
-import { DownOutlined, UploadOutlined, FileAddFilled } from '@ant-design/icons';
+import { Upload, message, Button, Select, Divider, Input } from 'antd';
+import { UploadOutlined, FileAddFilled } from '@ant-design/icons';
 import Title from 'antd/lib/typography/Title';
 interface BodyProps {
   //   title: string;

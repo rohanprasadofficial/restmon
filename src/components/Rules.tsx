@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import RulesInput from './common/RulesInput';
 interface RulesProps {
   //   title: string;
 }
@@ -7,7 +8,10 @@ interface RulesProps {
 const Rules: React.FC<RulesProps> = () => {
   return (
     <RulesStyle>
-      <p>Body</p>
+      <RulesInput />
+      <RulesInput />
+      <RulesInput />
+      <RulesInput />
     </RulesStyle>
   );
 };
