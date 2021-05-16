@@ -7,7 +7,7 @@ interface SettingsProps {
 const Settings: React.FC<SettingsProps> = () => {
   return (
     <SettingsStyle>
-      <p>Body</p>
+      <p>settings</p>
     </SettingsStyle>
   );
 };
